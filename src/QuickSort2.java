@@ -19,9 +19,7 @@ public class QuickSort2 extends QuickSort {
      * @return The location of the pivot value
      */
     @Override
-    protected <T extends Comparable<T>>  int partition(T[] table,
-            int first,
-            int last) {
+    protected <T extends Comparable<T>>  int partition(T[] table, int first, int last) {
         // Put the median of table[first], table[middle], table[last]
         // int table[first] and use this value as the pivot
         bubbleSort3(table, first, last);
@@ -33,11 +31,12 @@ public class QuickSort2 extends QuickSort {
             // Invariant:
             // All items in table[first . . . up - 1] <= pivot
             // All items in table[down + 1 . . . last] > pivot
-            while ((up < last) && (pivot.compareTo(table[up]) >= 0)) {
-                up++;
+            while (up < last) {
                 comparisons++;
+                if (pivot.compareTo(table[up]) >= 0) {
+                    up++;
+                } else { break; }
             }
-            comparisons++; // final comparison -> exit the loop
             // assert: up equals last or table[up] > pivot.
             while (pivot.compareTo(table[down]) < 0) {
                 down--;
