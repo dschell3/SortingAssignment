@@ -4,6 +4,8 @@
  * @author Paul Wolfgang
  */
 public class QuickSort2 extends QuickSort {
+    private int comparisons;
+    private int size;
 
     /*<listing chapter="8" number="10">*/
     /**
@@ -33,11 +35,14 @@ public class QuickSort2 extends QuickSort {
             // All items in table[down + 1 . . . last] > pivot
             while ((up < last) && (pivot.compareTo(table[up]) >= 0)) {
                 up++;
+                comparisons++;
             }
             // assert: up equals last or table[up] > pivot.
             while (pivot.compareTo(table[down]) < 0) {
                 down--;
+                comparisons++;
             }
+            comparisons++; // final comparison -> exit of loop
             // assert: down equals first or table[down] <= pivot.
             if (up < down) { // if up is to the left of down.
                 // Exchange table[up] and table[down].
@@ -53,6 +58,13 @@ public class QuickSort2 extends QuickSort {
         return down;
     }
 
+    @Override
+    public <T extends Comparable<T>> void sort(T[] table) {
+        comparisons = 0;
+        size = table.length;
+        super.sort(table);
+    }
+
     /**
      * Sort table[first], table[middle], table[last].
      * @param <T> The data type
@@ -63,18 +75,32 @@ public class QuickSort2 extends QuickSort {
     protected <T extends Comparable<T>>  void bubbleSort3(T[] table,
             int first, int last) {
         int middle = first + (last - first) / 2;
+
+        comparisons++;
         if ((table[middle].compareTo(table[first]) < 0)) {
             swap(table, first, middle);
         }
+
+        comparisons++;
         // assert: table[first] <= table[middle]
         if ((table[last].compareTo(table[middle])) < 0) {
             swap(table, middle, last);
         }
+
+        comparisons++;
         // assert: table[last] is the largets of the three.
         if ((table[middle].compareTo(table[first]) < 0)) {
             swap(table, first, middle);
         }
         // assert table[first] <= table[middle] <= table[last]
     }
+
+    @Override
+    public String toString() {
+        String s = "******* Quick Sort *******\n" + "Array Size(N): " + size;
+        s += "\nNumber of comparisons: " + comparisons;
+        return s;
+    }
+
     /*</listing>*/
 }
