@@ -21,8 +21,8 @@ public class Driver {
         }
 
         System.out.println("\nSorted Array:");
-        SelectionSort selectionSort = new SelectionSort();
-        selectionSort.sort(arr);
+        InsertionSort insertionSort = new InsertionSort();
+        insertionSort.sort(arr);
         for (int i = 0; i < arr.length; ++i) {
             System.out.print(arr[i] + "  ");
         }
