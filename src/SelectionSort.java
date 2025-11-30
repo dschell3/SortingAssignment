@@ -42,8 +42,8 @@ public class SelectionSort implements SortAlgorithm {
 
     @Override
     public String toString() {
-        String s = "******* Selection Sort *******\n" + "Array Size(N): " + size;
-        s += "\nNumber of comparisons: " + comparisons + "\n";
+        String s = "\n******* Selection Sort *******\n" + "Array Size(N): " + size;
+        s += "\nNumber of comparisons: " + comparisons;
         return s;
     }
 }

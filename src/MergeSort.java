@@ -80,7 +80,7 @@ public class MergeSort implements SortAlgorithm {
     }
 
     public String toString() {
-        String s = "******* Merge Sort *******\n" + "Array Size: " + size;
+        String s = "\n******* Merge Sort *******\n" + "Array Size: " + size;
         s += "\nNumber of Comparisons: " + comparisons;
         return s;
     }

@@ -97,7 +97,7 @@ public class QuickSort2 extends QuickSort {
 
     @Override
     public String toString() {
-        String s = "******* Quick Sort *******\n" + "Array Size(N): " + size;
+        String s = "\n******* Quick Sort *******\n" + "Array Size(N): " + size;
         s += "\nNumber of comparisons: " + comparisons;
         return s;
     }

@@ -52,7 +52,7 @@ public class InsertionSort implements SortAlgorithm {
     }
     @Override
     public String toString() {
-        String s = "******* Insertion Sort *******\n" + "Array Size(N): " + size;
+        String s = "\n******* Insertion Sort *******\n" + "Array Size(N): " + size;
         s += "\nNumber of Comparisons: " + comparisons;
         return s;
     }
