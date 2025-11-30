@@ -40,16 +40,17 @@ public class InsertionSort implements SortAlgorithm {
     private static <T extends Comparable<T>>  void insert(T[] table,
             int nextPos) {
         T nextVal = table[nextPos]; // Element to insert.
-        while (nextPos > 0
-                && nextVal.compareTo(table[nextPos - 1]) < 0) {
+        while (nextPos > 0) {
             comparisons++;
-            table[nextPos] = table[nextPos - 1]; // Shift down.
-            nextPos--; // Check next smaller element.
+            if ( nextVal.compareTo(table[nextPos - 1]) < 0) {
+                table[nextPos] = table[nextPos - 1]; // Shift down.
+                nextPos--; // Check next smaller element.
+            } else { break; } // exit -> cursor in correct spot
         }
         // Insert nextVal at nextPos.
         table[nextPos] = nextVal;
-        comparisons++;  // don't forget last comparison after exiting loop
     }
+
     @Override
     public String toString() {
         String s = "\n******* Insertion Sort *******\n" + "Array Size(N): " + size;

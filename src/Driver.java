@@ -14,7 +14,7 @@ public class Driver {
         // use random to fill the N elements of the arr
         Integer[] arr = new Integer[n];
         for (int i = 0; i < n; ++i) {
-            arr[i] = random.nextInt(100);
+            arr[i] = random.nextInt(100); // limit bound to 100, for data readability
         }
 
         // clone the array so each method has to sort the same data

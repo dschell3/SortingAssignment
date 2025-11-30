@@ -20,7 +20,11 @@ public class MergeSort implements SortAlgorithm {
     public <T extends Comparable<T>>  void sort(T[] table) {
         comparisons = 0;
         size = table.length;
+        mergeSort(table); // call helper to sort
+    }
 
+    // moved sort() methodology into mergeSort as a helper, so counter doesn't reset each call
+    private <T extends Comparable<T>> void mergeSort(T[] table) {
         // A table with one element is sorted already.
         if (table.length > 1) {
             // Split table into halves.
@@ -32,9 +36,9 @@ public class MergeSort implements SortAlgorithm {
             System.arraycopy(table, halfSize, rightTable, 0,
                     table.length - halfSize);
 
-            // Sort the halves.
-            sort(leftTable);
-            sort(rightTable);
+            // Sort the halves. use the helper not sort() so counter doesn't reset
+            mergeSort(leftTable);
+            mergeSort(rightTable);
 
             // Merge the halves.
             merge(table, leftTable, rightTable);

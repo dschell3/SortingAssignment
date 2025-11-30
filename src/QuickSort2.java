@@ -37,6 +37,7 @@ public class QuickSort2 extends QuickSort {
                 up++;
                 comparisons++;
             }
+            comparisons++; // final comparison -> exit the loop
             // assert: up equals last or table[up] > pivot.
             while (pivot.compareTo(table[down]) < 0) {
                 down--;
