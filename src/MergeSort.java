@@ -6,6 +6,8 @@
  *  @author Koffman and Wolfgang
  */
 public class MergeSort implements SortAlgorithm {
+    private static int comparisons;
+    private int size;
 
     /**
      * Sort the array using the merge sort algorithm.
@@ -16,6 +18,9 @@ public class MergeSort implements SortAlgorithm {
     @Override
     @SuppressWarnings({"unchecked", "rawtypes"})
     public <T extends Comparable<T>>  void sort(T[] table) {
+        comparisons = 0;
+        size = table.length;
+
         // A table with one element is sorted already.
         if (table.length > 1) {
             // Split table into halves.
@@ -54,6 +59,7 @@ public class MergeSort implements SortAlgorithm {
 
         // While there is data in both input sequences
         while (i < leftSequence.length && j < rightSequence.length) {
+            comparisons++;
             // Find the smaller and
             // insert it into the output sequence.
             if (leftSequence[i].compareTo(rightSequence[j]) < 0) {
@@ -71,6 +77,12 @@ public class MergeSort implements SortAlgorithm {
         while (j < rightSequence.length) {
             outputSequence[k++] = rightSequence[j++];
         }
+    }
+
+    public String toString() {
+        String s = "******* Merge Sort *******\n" + "Array Size: " + size;
+        s += "\nNumber of Comparisons: " + comparisons;
+        return s;
     }
     /*</listing>*/
 }
