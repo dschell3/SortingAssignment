@@ -3,6 +3,8 @@
  **/
 public class SelectionSort implements SortAlgorithm {
 
+    private int comparisons;
+    private int size;
     /**
      * Sort the array using selection sort algorithm.
      * pretable contains Comparable objects.
@@ -11,6 +13,9 @@ public class SelectionSort implements SortAlgorithm {
      */
     @Override
     public <T extends Comparable<T>>  void sort(T[] table) {
+        comparisons = 0;
+        size = table.length;
+
         int n = table.length;
         for (int fill = 0; fill < n - 1; fill++) {
             // Invariant: table[0 . . . fill - 1] is sorted.
@@ -18,6 +23,7 @@ public class SelectionSort implements SortAlgorithm {
             for (int next = fill + 1; next < n; next++) {
                 // Invariant: table[posMin] is the smallest item in
                 // table[fill . . . next - 1].
+                comparisons++; // count ALL comparisons (T + F)
                 if (table[next].compareTo(table[posMin]) < 0) {
                     posMin = next;
                 }
@@ -32,5 +38,12 @@ public class SelectionSort implements SortAlgorithm {
             // table[fill . . . n - 1].
         }
         // assert: table[0 . . . n - 1] is sorted.
+    }
+
+    @Override
+    public String toString() {
+        String s = "******* Selection Sort *******\n" + "Array Size(N): " + size;
+        s += "\nNumber of comparisons: " + comparisons + "\n";
+        return s;
     }
 }
