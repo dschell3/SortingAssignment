@@ -1,3 +1,11 @@
+/*
+ * MergeSort.java
+ *
+ * Implements the recursive merge sort algorithm - an O(n log n) divide-and-conquer
+ * sort that splits the array into halves, recursively sorts them, then merges.
+ * Guaranteed O(n log n) performance but requires O(n) space.
+ */
+
 /*<listing chapter="8" number="5"*/
 
 /**
@@ -30,8 +38,7 @@ public class MergeSort implements SortAlgorithm {
             // Split table into halves.
             int halfSize = table.length / 2;
             T[] leftTable = (T[]) new Comparable[halfSize];
-            T[] rightTable =
-                    (T[]) new Comparable[table.length - halfSize];
+            T[] rightTable = (T[]) new Comparable[table.length - halfSize];
             System.arraycopy(table, 0, leftTable, 0, halfSize);
             System.arraycopy(table, halfSize, rightTable, 0,
                     table.length - halfSize);
@@ -63,9 +70,10 @@ public class MergeSort implements SortAlgorithm {
 
         // While there is data in both input sequences
         while (i < leftSequence.length && j < rightSequence.length) {
+            // During merge, compare the front elements of both sorted sequences to determine
+            // which is smaller -> placed next in the output.
             comparisons++;
-            // Find the smaller and
-            // insert it into the output sequence.
+            // Find the smaller and insert it into the output sequence.
             if (leftSequence[i].compareTo(rightSequence[j]) < 0) {
                 outputSequence[k++] = leftSequence[i++];
             } else {

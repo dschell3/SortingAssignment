@@ -1,5 +1,13 @@
+/*
+ * SortAlgorithm.java
+ *
+ * Interface defining the contract for sorting algorithms.
+ * All sorting implementations must provide a sort method that
+ * operates on arrays of Comparable objects.
+ */
+
 /**
- * Interface to define sort algoirthms.
+ * Interface to define sort algorithms.
  * @author Paul Wolfgang
  */
 public interface SortAlgorithm {

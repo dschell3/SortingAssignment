@@ -1,6 +1,10 @@
-/*<listing chapter="8" number="2">*/
-
-// import static jdk.internal.jrtfs.JrtFileAttributeView.AttrID.size;
+/*
+ * InsertionSort.java
+ *
+ * Implements the insertion sort algorithm - an O(n²) comparison-based sort
+ * that builds a sorted portion by inserting each element into its correct position.
+ * Efficient for small or nearly-sorted arrays.
+ * */
 
 /**
  * Implements the insertion sort algorithm.

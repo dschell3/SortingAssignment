@@ -1,7 +1,17 @@
+/*
+ * Driver.java
+ *
+ * Tests for comparing sorting algorithm performance.
+ * Generates a random array and runs multiple sorting algorithms,
+ * tracking and displaying the number of comparisons each makes.
+ */
+
 import java.util.Scanner;
 import java.util.Random;
 
 public class Driver {
+    /// CHANGE ME to alter the bounds of integers to sort; ex. 1000 = [0-1000]
+    private static final int UPPER_BOUND = 10000;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -14,7 +24,7 @@ public class Driver {
         // use random to fill the N elements of the arr
         Integer[] arr = new Integer[n];
         for (int i = 0; i < n; ++i) {
-            arr[i] = random.nextInt(100); // limit bound to 100, for data readability
+            arr[i] = random.nextInt(UPPER_BOUND); // limit bound - assign above
         }
 
         // clone the array so each method has to sort the same data
@@ -57,9 +67,16 @@ public class Driver {
 
     }
     public static void printArr(Integer[] arr) {
+        // calculate print width -> counts the max digits determined by UPPER_BOUND + pads each side
+        int width = String.valueOf(UPPER_BOUND - 1).length() + 1;
+
         for (int i = 0; i < arr.length; ++i) {
-            System.out.print(arr[i] + "  ");
+            // format consistently for different digit lengths; ex. width = 5 -> "%5d"
+            System.out.print(String.format("%" + width + "d", arr[i]));
+            // Print line every 20 elements for readability
+            if ((i + 1) % 20 == 0) { System.out.println(); }
         }
-        System.out.println();
+        // print newline unless one just was printed
+        if (arr.length % 20 != 0) { System.out.println(); }
     }
 }

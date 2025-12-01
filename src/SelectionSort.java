@@ -1,3 +1,10 @@
+/*
+ * SelectionSort.java
+ *
+ * Implements the selection sort algorithm - an O(n²) comparison-based sort
+ * that repeatedly finds the minimum element and moves it to the sorted portion.
+ */
+
 /** Implements the selection sort algorithm.
  *  @author Koffman and Wolfgang
  **/

@@ -1,3 +1,11 @@
+/*
+ * QuickSort2.java
+ *
+ * Concrete quicksort implementation using median-of-three pivot selection.
+ * This optimization reduces the chance of worst-case O(n²) performance by
+ * choosing a pivot that is likely closer to the true median.
+ */
+
 /**
  * Class to extend QuickSort implementing the second version of the
  * partition Algorithm
@@ -32,6 +40,8 @@ public class QuickSort2 extends QuickSort {
             // All items in table[first . . . up - 1] <= pivot
             // All items in table[down + 1 . . . last] > pivot
             while (up < last) {
+                // Compare each element against the pivot to find elements greater than pivot
+                // (moving up from the left). Determines where the partition boundary should be.
                 comparisons++;
                 if (pivot.compareTo(table[up]) >= 0) {
                     up++;
@@ -40,6 +50,8 @@ public class QuickSort2 extends QuickSort {
             // assert: up equals last or table[up] > pivot.
             while (pivot.compareTo(table[down]) < 0) {
                 down--;
+                // Compare each element against the pivot to find elements <= to pivot
+                // moving down from the right.
                 comparisons++;
             }
             comparisons++; // final comparison -> exit of loop
